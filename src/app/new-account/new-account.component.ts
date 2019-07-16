@@ -8,7 +8,11 @@ import { AccountsService } from '../accounts.service';
 })
 export class NewAccountComponent implements OnInit {
 
-  constructor(private accountsService: AccountsService) {}
+  constructor(private accountsService: AccountsService) {
+    this.accountsService.statusUpdated.subscribe(
+      (status: string) => alert('New Status: ' + status)
+    );
+  }
 
   ngOnInit(): void {
     console.log("New Account Component Initialized")
@@ -33,6 +37,5 @@ export class NewAccountComponent implements OnInit {
            then one instance of that service, per one instance of that component will be avaible to all that component and all it's child and child of childs if present.
            provided you do not override this behavioiur and provide it once again in the child component.
            This rule applies to AppComponent (one instance per one instance of AppComponent), but since we only have one instance of App component, I have not mentioned it.
-
-  */
+    */
 }
